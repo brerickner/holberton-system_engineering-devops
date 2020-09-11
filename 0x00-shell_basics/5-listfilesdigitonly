@@ -1,2 +1,2 @@
-#!/bit/bash
+#!/bin/bash
 ls -lan
