@@ -1,2 +1,2 @@
 #!/bit/bash
--l -n -a
+ls -lan
