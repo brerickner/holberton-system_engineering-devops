@@ -1,2 +1,2 @@
 #!/bin/bash
-xcopy . *.html .. /y
+cp -u ./*.html ..
