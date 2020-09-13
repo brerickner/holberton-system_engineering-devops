@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -x bin -print | wc -l
+find . type -c bin -print | wc -l
