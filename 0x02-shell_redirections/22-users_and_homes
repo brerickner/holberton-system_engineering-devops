@@ -1,2 +1,2 @@
 #!/bin/bash
-sort | ls -l ~/etc/passwd 
+ls -l /home | less 
