@@ -1,2 +1,2 @@
 #!/bin/bash
-cp tail -n1 iacta
+tail -"$Lines1"f iacta
