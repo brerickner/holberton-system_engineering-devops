@@ -1,2 +1,2 @@
 #!/bin/bash
-ts [A=CHAR=Z][c=CHAR=e] 
+tr -d C, c 
