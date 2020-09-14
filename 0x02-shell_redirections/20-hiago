@@ -1,2 +1,2 @@
 #!/bin/bash
-rm "c","C"
+ts [A=CHAR=Z][c=CHAR=e] 
