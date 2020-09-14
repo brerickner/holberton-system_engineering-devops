@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -1n iacta
+find . -type f tail -1 iacta
