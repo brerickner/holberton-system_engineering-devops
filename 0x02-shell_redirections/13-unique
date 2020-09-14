@@ -1,11 +1,2 @@
 #!/bin/bash
-uniq -u hello/
-hi/
-hi/
-hi/
-my/
-say/
-say/
-name/
-is/
-bre/
+uniq -u
