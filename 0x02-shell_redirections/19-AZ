@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((A = Z)) $((c = e))
+tr [A=CHAR=Z] [c=CHAR=e]
