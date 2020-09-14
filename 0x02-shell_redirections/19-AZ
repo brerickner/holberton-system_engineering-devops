@@ -1,2 +1,2 @@
 #!/bin/bash
-tr [A=CHAR=Z] [c=CHAR=e]
+tr 'A-Z' 'c-e'
