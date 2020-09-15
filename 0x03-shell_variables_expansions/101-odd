@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%s\n3" .
+ls | printf "%s\n3"
