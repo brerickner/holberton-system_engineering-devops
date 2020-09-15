@@ -1,2 +1,2 @@
-B#!/bin/bash
+#!/bin/bash
 sort | cat etc/passwd  
