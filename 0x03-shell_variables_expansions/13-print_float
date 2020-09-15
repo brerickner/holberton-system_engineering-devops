@@ -1,2 +1,3 @@
 #!/bin/bash
-echo $NUM%2d\n
+printf "%0.2f\n" $NUM
+
