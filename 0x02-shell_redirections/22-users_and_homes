@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l /home | less 
+cat etc/passwd | sort 
