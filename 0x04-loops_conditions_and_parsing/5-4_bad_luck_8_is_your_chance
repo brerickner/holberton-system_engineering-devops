@@ -6,10 +6,10 @@ x=1
 while [ $((x++)) -le 10 ]
 do
 	
-	if [ $x == 4 ]
+	if [ $x == 5 ]
 	then
 		echo "bad luck"
-	elif [ $x == 8 ]
+	elif [ $x == 9 ]
 	then
 		echo "good luck"
 	else
