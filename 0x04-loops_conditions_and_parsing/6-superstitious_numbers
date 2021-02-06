@@ -2,7 +2,7 @@
 # This script diplays numbers 1 - 20. Bad lucks after lines 4, 9 and 17
 
 x=0
-while [ $((x++)) -le 20 ]
+while [ $((x++)) -le 19 ]
 do
 	echo "$x"
 
