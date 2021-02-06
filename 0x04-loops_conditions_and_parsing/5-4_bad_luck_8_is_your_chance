@@ -3,16 +3,7 @@
 # and "Holberton School" any other line between 1-10
 
 x=1
-while [ $((x++)) -le 10 ]
-do
-	
-	if [ $x == 5 ]
-	then
-		echo "bad luck"
-	elif [ $x == 9 ]
-	then
-		echo "good luck"
-	else
-		echo "Holberton School"
-	fi
-done
+
+while [ $((x++)) -le 10 ]; do if [ $x == 5 ]; then echo "bad luck";
+
+elif [ $x == 9 ]; then echo "good luck"; else echo "Holberton School"; fi; done
