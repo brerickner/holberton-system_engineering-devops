@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 # This script is displaying "Holberton School" 10 times
 
-for (( x=1; x<=10;x++ ))
-do
-	echo "Holberton School"
-done
+for (( x=1; x<=10; x++ )); do echo "Holberton School"; done
