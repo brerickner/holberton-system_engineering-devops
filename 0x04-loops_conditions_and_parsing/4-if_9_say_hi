@@ -2,11 +2,5 @@
 # This script is displaying "Holberton School" 10 times, "hi" after line 9
 
 x=1
-while [ $((x++)) -le 10 ]
-do
-	echo "Holberton School"
-	if [ $x == 10 ]
-		then
-			echo "Hi"
-		fi
-done
+
+while [ $((x++)) -le 10 ]; do echo "Holberton School"; if [ $x == 10 ]; then echo "Hi"; fi; done
