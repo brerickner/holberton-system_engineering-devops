@@ -1,2 +1,10 @@
 #!/usr/bin/env bash
 # Create file to display text and then delete file
+
+file=/var/run/holbertonscript.pid
+sudo $BASHPID > $file
+
+trap "echo 'I hate the kill command'; sudo rm $file; exit" TERM
+trap "echo 'Y U no love me?!" INT
+trap "sudo rm $file; exit" QUIT
+while true; do echo "To infinity and beyond"; sleep 2; done
