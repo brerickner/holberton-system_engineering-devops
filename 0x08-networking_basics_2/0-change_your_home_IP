@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # script that configures an Ubuntu server
 
-TEST="/home/vagrant/holberton-system_engineering-devops/0x08-networking_basics_2/test"
+#TEST="/home/vagrant/holberton-system_engineering-devops/0x08-networking_basics_2/test"
 
-cat /etc/hosts > $TEST
-sed -i s/127.0.0.1/127.0.0.2/ $TEST
-echo '8.8.8.8   facebook.com' >> $TEST
-cat $TEST > /etc/hosts
-rm -f $TEST
+cat /etc/hosts > ~/host.new
+sed -i s/127.0.0.1/127.0.0.2/ ~/host.new
+echo '8.8.8.8   facebook.com' >> ~/host.new
+cat ~/host.new > /etc/hosts
+rm -f ~/host.new
