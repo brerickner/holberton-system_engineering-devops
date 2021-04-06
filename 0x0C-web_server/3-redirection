@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # install nginx on server
 
-apt-get -y update
-apt-get -y install nginx
-echo Holberton School | sudo tee /var/www/html/index.html
+apt-get -y update;
+apt-get -y install nginx;
+echo Holberton School | sudo tee /var/www/html/index.html;
+scp -i ~/.ssh/holberton -o StrictHostKeyChecking=no bre_conf ubuntu@34.75.36.193:~/;
+sudo cp bre_conf /etc/nginx/sites-available/default;
 
-sudo cp bre_conf /etc/nginx/sites-available/default
-
-service nginx restart
+service nginx restart;
