@@ -5,4 +5,5 @@ apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo "Holberton School" | sudo tee /var/www/html/index.html
+cp /etc/nginx/sites-available/default_save /etc/nginx/sites-available/default
 service nginx restart
