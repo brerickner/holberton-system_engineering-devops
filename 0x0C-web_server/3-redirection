@@ -6,22 +6,20 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo "Holberton School" | sudo tee /var/www/html/index.html
 file=/etc/nginx/sites-available/default
-sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" "$file"
-service nginx restart;
-
+#sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" "$file"
 #scp -i ~/.ssh/holberton -o StrictHostKeyChecking=no bre_conf ubuntu@34.75.36.193:~/;
-#file=~/bre_conf
-#conf="server {
-# 			  listen 80 default_server;
-# 			  listen [::]:80 default_server;
-# 			  root /etc/nginx/html;
-# 			  index index.html index.htm;
-#  			  location /redirect_me {
-#  			    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-# 			 }
-#	  }"
-#touch "$file" && chmod +w "$file"
-
-#echo "$conf" > "$file"
-#sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_save;
-#echo "$conf" | sudo tee /etc/nginx/sites-available/default;
+file=~/bre_conf
+conf="server {
+ 			  listen 80 default_server;
+ 			  listen [::]:80 default_server;
+ 			  root /etc/nginx/html;
+ 			  index index.html index.htm;
+  			  location /redirect_me {
+  			    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+ 			 }
+	  }"
+touch "$file" && chmod +w "$file"
+echo "$conf" > "$file"
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_save;
+sudo cp "$file" /etc/nginx/sites-available/default;
+service nginx restart;
