@@ -7,7 +7,6 @@ apt-get -y install nginx
 file=~/bre_conf
 defConf=/etc/nginx/sites-available/default
 conf="server {
-    error_page 404 /404.html
     add_header X-Served-By $HOSTNAME;
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -18,6 +17,6 @@ conf="server {
     }
 }"
 
-echo "$conf" > $file && chmod +x $file
-cp $file $defConf
+echo "$conf" > $file && chmod +x $file;
+cp $file $defConf;
 service nginx restart;
