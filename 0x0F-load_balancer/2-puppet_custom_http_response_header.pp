@@ -1,13 +1,21 @@
 #installing web-02 to be identical to web-01
 
-package { 'nginx':
-  ensure   => 'installed',
+exec { 'apt-get install nginx':
+  command  => 'apt-get update',
+  provider => '/usr/bin/bash',
 }
-
+->
+package { 'nginx':
+  ensure  => 'installed',
+}
+->
 file { '/etc/nginx/sites-available/default':
-  ensure  => 'file',
-  content => "add_header X-Served-By ${hostname};",
-  mode    => '0744',
-  owner   => 'www-data',
-  group   => 'www-data',
+  ensure => present,
+  path   => /etc/nginx/sites-available/default,
+  after  => 'listen 80 default_server',
+  line   => 'add_header X-Served-By $hostname;',
+}
+->
+service {'nginx':
+  ensure => running,
 }
