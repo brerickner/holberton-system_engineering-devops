@@ -2,6 +2,8 @@
 # configure web-02 to be identical to web-01       
 
 apt-get update                                    
+apt-get -y install nginx                          
+
 file=~/bre_conf
 defConf=/etc/nginx/sites-available/default
 echo "server {                                     
@@ -17,4 +19,4 @@ echo "server {
 }" | tee $file;
 chmod +x $file;
 cp $file $defConf;
-sudo service nginx restart;
+service nginx restart;
