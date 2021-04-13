@@ -12,12 +12,13 @@ echo "server {
  			  listen 80 default_server;
  			  listen [::]:80 default_server;
  			  root /var/www/html;
- 			  index index.html index.htm;
+ 			  index index.html index.htm index.nginx-debian.html;
+			  server_name _;
   			  location /redirect_me {
   			    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
  			 }
               error_page 404 /404.html;
 	  }" | tee "$file";
 
-sudo cp "$file" /etc/nginx/sites-available/default;
+sudo cp "$file" "$defConf"
 sudo service nginx restart;
