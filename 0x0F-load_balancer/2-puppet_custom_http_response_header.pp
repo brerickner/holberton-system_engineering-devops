@@ -11,7 +11,7 @@ package { 'nginx':
 ->
 file { '/etc/nginx/sites-available/default':
   ensure => present,
-  path   => /etc/nginx/sites-available/default,
+  path   => '/etc/nginx/sites-available/default',
   after  => 'listen 80 default_server',
   line   => 'add_header X-Served-By $hostname;',
 }
