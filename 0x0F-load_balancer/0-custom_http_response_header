@@ -17,6 +17,6 @@ conf="server {
     }
 }"
 
-echo '$conf' > $file && chmod +x $file;
+echo '$conf' | tee $file && chmod +x $file;
 cp $file $defConf;
 service nginx restart;
