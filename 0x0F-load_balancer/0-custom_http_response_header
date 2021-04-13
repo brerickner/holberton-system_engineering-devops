@@ -1,22 +1,20 @@
-#!/usr/bin/env bash
-# configure web-02 to be identical to web-01
+#!/usr/bin/env bash                                
+# configure web-02 to be identical to web-01       
 
-apt-get update
-apt-get -y install nginx
-
+apt-get update                                    
 file=~/bre_conf
 defConf=/etc/nginx/sites-available/default
-conf="server {
-    add_header X-Served-By $HOSTNAME;
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    index index.html index.htm;
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-}"
-
-echo '$conf' | tee $file && chmod +x $file;
+echo "server {                                     
+    add_header X-Served-By $HOSTNAME;              
+    listen 80 default_server;                      
+    listen [::]:80 default_server;                 
+    root /var/www/html;                            
+    index index.html index.htm;                    
+    location /redirect_me {                        
+        return 301 https://www.youtube.com/watch?v\
+=QH2-TGUlwu4;                                      
+    }                                              
+}" | tee $file;
+chmod +x $file;
 cp $file $defConf;
-service nginx restart;
+sudo service nginx restart;
