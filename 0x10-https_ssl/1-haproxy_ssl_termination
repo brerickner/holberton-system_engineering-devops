@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-# configure haproxy
-
 global
         log /dev/log    local0
         log /dev/log    local1 notice
@@ -36,18 +33,21 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-        proxConf=/etc/haproxy/haproxy.cfg
 
-listen 2326-lb-01
-  bind *:80
-  balance roundrobin
-  server gc-2326-web-01 34.75.36.193:80 check
-  server gc-2326-web-02 54.221.31.19:80 check
-  bind 0.0.0.0:443 ssl crt-list /etc/haproxy/haproxy.cfg
-  reqadd X-Forwarded-Proto:\ https
-  acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-  use_backend letsencrypt-backend if letsencrypt-acl
-  default_backend www-backend
+frontend 2326-lb-01
+        bind *:80
+        bind *:443 ssl crt /etc/ssl/www.brerickner.tech/www.brerickner.tech.pem
+        # Test URI to see if its a letsencrypt request
+        acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+        use_backend letsencrypt-backend if letsencrypt-acl
+        default_backend web_servers
 
+backend web_servers
+        mode http
+        balance roundrobin
+        server 2326-web-01 34.75.36.193:80
+        server 2326-web-02 3.94.194.152:80
+
+# LE Backend
 backend letsencrypt-backend
-   server letsencrypt 127.0.0.1:54321
+        server letsencrypt 127.0.0.1:8888
