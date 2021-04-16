@@ -38,8 +38,8 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
         proxConf=/etc/haproxy/haproxy.cfg
 
-listen 2326-lb-01'
-  bind *:80' 
-  balance roundrobin' 
-  server gc-2326-web-01 34.75.36.193:80 check'
-  server gc-2326-web-02 54.221.31.19:80 check'
+listen 2326-lb-01
+  bind *:80
+  balance roundrobin
+  server gc-2326-web-01 34.75.36.193:80 check
+  server gc-2326-web-02 54.221.31.19:80 check
