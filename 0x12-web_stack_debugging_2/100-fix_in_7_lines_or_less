@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # run as nginx user
-
 sudo pkill -f apache2;
 sudo chmod 644 /etc/nginx/nginx.conf;
 sudo chown nginx:nginx /etc/nginx/nginx.conf;
