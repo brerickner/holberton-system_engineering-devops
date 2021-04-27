@@ -3,4 +3,4 @@
 
 dateski=$(date '+%d-%m-%Y')
 mysqldump -u root -p "$1" --all-databases > backup.sql
-tar -czvf "$dateski".tgz.gz backup.sql
+tar -czvf "$dateski".tar.gz backup.sql
