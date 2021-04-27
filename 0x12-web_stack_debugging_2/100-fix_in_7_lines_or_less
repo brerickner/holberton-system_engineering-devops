@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
-# install nginx on server
+# run as nginx user
 
-sudo apt-get update;
-sudo apt-get -y install apache2;
-sudo service apache2 start;
 sudo pkill -f apache2;
-sudo chmod 664 /etc/nginx/nginx.conf;
+sudo chmod 700 /etc/nginx/nginx.conf;
 sudo chown nginx:nginx /etc/nginx/nginx.conf;
 sudo sed -i "s/80/8080/g" /etc/nginx/sites-available/default;
 sudo -u nginx service nginx restart;
