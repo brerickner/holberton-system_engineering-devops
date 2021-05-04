@@ -33,4 +33,4 @@ if __name__ == "__main__":
     print("Employee {} is done with tasks({}/{}):".format(emp_name, chk, tc))
 
     for task in task_list:
-        print("     {}".format(task))
+        print("\t {}".format(task))
