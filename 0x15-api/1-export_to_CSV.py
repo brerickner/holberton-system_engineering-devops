@@ -25,6 +25,6 @@ if __name__ == "__main__":
     for data in todo_resp.json():
         done = data['completed']
         task = data['title']
-        with open(the_file, mode='a') as csv_file:
+        with open(the_file, mode='w') as csv_file:
             emp_tasks = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
             emp_tasks.writerow([emp_id, u_name, done, task])
