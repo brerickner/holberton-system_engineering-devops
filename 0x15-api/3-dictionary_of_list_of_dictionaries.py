@@ -34,8 +34,7 @@ if __name__ == "__main__":
                     "task": task, "completed": done, "username": u_name
                 }
                 final_dict.get(user_id).append(task_dict)
-            print(final_dict)
 
-            with open(the_file, mode='w') as json_file:
-                j_str = json.dumps(final_dict)
-                json_file.write(j_str)
+                with open(the_file, mode='w') as json_file:
+                    j_str = json.dumps(final_dict)
+                    json_file.write(j_str)
