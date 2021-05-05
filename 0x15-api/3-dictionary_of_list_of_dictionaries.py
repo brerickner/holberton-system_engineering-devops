@@ -13,9 +13,9 @@ if __name__ == "__main__":
     user_resp = requests.get(user_name).json()
     emp_id_list = []
     for emps in user_resp:
-        emp_name = emps['name']
-        u_name = emps['username']
-        emp_id = emps['id']
+        emp_name = emps.get('name')
+        u_name = emps.get('username')
+        emp_id = emps.get('id')
         emp_id_list.append(emp_id)
 
         for employee in emp_id_list:
@@ -28,7 +28,7 @@ if __name__ == "__main__":
             .format(emp_id)
             todo_resp = requests.get(to_dos)
             for data in todo_resp.json():
-                task = data['title']
+                task = data.get('title')
                 task_dict = {
                     "task": task, "completed": done, "username": u_name
                 }
