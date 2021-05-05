@@ -24,11 +24,12 @@ if __name__ == "__main__":
             final_list = []
             the_file = "todo_all_employees.json"
             final_dict = {}
-            to_dos = 'https://jsonplaceholder.typicode.com/todos?userId={}'
-            .format(emp_id)
+            to_dos = 'https://jsonplaceholder.typicode.com/todos?userId={}'\
+                .format(emp_id)
             todo_resp = requests.get(to_dos)
             for data in todo_resp.json():
-                task = data.get('title')
+                task = data['title']
+                done = data['completed']
                 task_dict = {
                     "task": task, "completed": done, "username": u_name
                 }
@@ -36,5 +37,5 @@ if __name__ == "__main__":
                 final_dict[emp_id] = dict_list
 
                 with open(the_file, mode='a') as json_file:
-                    j_str = json.dumps(final_dict)
+                    j_str = json.dump(final_dict)
                     json_file.write(j_str)
