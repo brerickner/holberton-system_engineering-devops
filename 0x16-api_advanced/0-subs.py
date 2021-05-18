@@ -10,7 +10,10 @@ def number_of_subscribers(subreddit):
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     headers = {"User-Agent": "change username"}
     try:
-        response = requests.get(url, headers=headers).json()
+        response = requests.get(
+                                url,
+                                headers=headers,
+                                allow_redirects=False).json()
         meow = response.get('data')
         return (meow['subscribers'])
     except:
