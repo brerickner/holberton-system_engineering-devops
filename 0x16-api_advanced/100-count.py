@@ -3,9 +3,10 @@
 
 from json.decoder import JSONDecodeError, JSONDecoder
 import requests
+import sys
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def count_words(subreddit, word_list, after=None, word_dict={}, flag=0):
     """ Method that returns returns a list containing the titles of
     all hot articles for a given subreddit"""
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
@@ -18,16 +19,19 @@ def recurse(subreddit, hot_list=[], after=None):
                                 headers=headers,
                                 params=parameter,
                                 allow_redirects=False).json()
-    except JSONDecodeError:
-        return(None)
+    except:
+        return(None, "none")
     meow = response.get('data')
     children = meow.get('children')
     after = meow.get('after')
-    flag = 0
     for titles in children:
-        hot_list.append(titles.get('data')['title'])
-        flag += 1
-        '''print(flag)'''
-        if after is None:
-            return(hot_list)
-    return(recurse(subreddit, hot_list, after))
+        title_fetch = titles.get('data')['title'].lower()
+        for word in word_list:
+            if word in title_fetch:
+                flag += 1
+                word_dict[word] = flag
+    if after is None:
+        for x in word_dict.keys():
+            print("{}: {}".format(x, word_dict[x]))
+        return
+    return(count_words(subreddit, word_list, after, word_dict, flag))
