@@ -9,7 +9,6 @@ def recurse(subreddit, hot_list=[], after=None):
     '''Method that returns returns a list containing the titles of
        all hot articles for a given subreddit'''
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    '''page through the listings with after anchoring result'''
     parameter = {'limit': 100, 'after': after}
     headers = {"User-Agent": "change username"}
     try:
