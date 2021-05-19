@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Module that queries Reddit API recursively """
 
-import requests
 from json.decoder import JSONDecodeError
+import requests
 
 
 def recurse(subreddit, hot_list=[], after=None):
