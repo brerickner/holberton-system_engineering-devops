@@ -1,22 +1,21 @@
 #!/usr/bin/python3
-'''Module that queries Reddit API recursively'''
+""" Module that queries Reddit API recursively """
 
-from json.decoder import JSONDecodeError, JSONDecoder
 import requests
+from json.decoder import JSONDecodeError
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    '''Method that returns returns a list containing the titles of
-       all hot articles for a given subreddit'''
+    """ Method that returning list of hot subreddits """
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     parameter = {'limit': 100, 'after': after}
-    headers = {"User-Agent": "change username"}
+    headers = {'User-Agent': 'change username'}
     try:
         response = requests.get(
-                                url,
-                                headers=headers,
-                                params=parameter,
-                                allow_redirects=False).json()
+            url,
+            headers=headers,
+            params=parameter,
+            allow_redirects=False).json()
     except JSONDecodeError:
         return(None)
     meow = response.get('data')
