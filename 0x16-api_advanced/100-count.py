@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Module that queries Reddit API recursively """
 
-from json.decoder import JSONDecodeError, JSONDecoder
 import requests
 import sys
 
@@ -13,14 +12,14 @@ def count_words(subreddit, word_list, after=None, word_dict={}, flag=0):
     ''' page through the listings with after anchoring with "" '''
     parameter = {'limit': 100, 'after': after}
     headers = {"User-Agent": "change username"}
-    try:
-        response = requests.get(
-                                url,
-                                headers=headers,
-                                params=parameter,
-                                allow_redirects=False).json()
-    except:
-        return(None, "none")
+    response = requests.get(
+                            url,
+                            headers=headers,
+                            params=parameter,
+                            allow_redirects=False)
+    if response.status_code != 200:
+        return(None)
+    response = response.json()
     meow = response.get('data')
     children = meow.get('children')
     after = meow.get('after')

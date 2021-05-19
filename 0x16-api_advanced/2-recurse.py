@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Module that queries Reddit API recursively """
 
-from json.decoder import JSONDecodeError
 import requests
 
 
@@ -10,14 +9,14 @@ def recurse(subreddit, hot_list=[], after=None):
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     parameter = {'limit': 100, 'after': after}
     headers = {'User-Agent': 'change username'}
-    try:
-        response = requests.get(
-            url,
-            headers=headers,
-            params=parameter,
-            allow_redirects=False).json()
-    except JSONDecodeError:
+    response = requests.get(
+        url,
+        headers=headers,
+        params=parameter,
+        allow_redirects=False)
+    if response.status_code != 200:
         return(None)
+    response = response.json()
     meow = response.get('data')
     children = meow.get('children')
     after = meow.get('after')
