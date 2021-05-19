@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Module that queries Reddit API recursively """
+
 from json.decoder import JSONDecodeError
 import requests
 
