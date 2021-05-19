@@ -20,10 +20,8 @@ def recurse(subreddit, hot_list=[], after=None):
     meow = response.get('data')
     children = meow.get('children')
     after = meow.get('after')
-    flag = 0
     for titles in children:
         hot_list.append(titles.get('data')['title'])
-        flag += 1
-        if after is None:
-            return(hot_list)
+    if after is None:
+        return(hot_list)
     return(recurse(subreddit, hot_list, after))
