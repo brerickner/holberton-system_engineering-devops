@@ -1,10 +1,10 @@
 server {
-   add_header X-Served-By gc-2326-web-01-1617239848;
+   add_header X-Served-By "$HOSTNAME";
    listen 80 default_server;
    listen [::]:80 default_server;
 
    #web-01
-   server_name 34.745.36.193;
+   server_name 34.75.36.193;
    
    location /airbnb-onepage/ {
       proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
