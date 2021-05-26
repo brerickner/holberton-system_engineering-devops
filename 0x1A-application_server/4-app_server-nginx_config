@@ -1,0 +1,45 @@
+server {
+   add_header X-Served-By "$HOSTNAME";
+   listen 80 default_server;
+   listen [::]:80 default_server;
+
+   #web-01
+   server_name 34.75.36.193;
+
+   location /api/ {
+      proxy_pass http://0.0.0.0:5002/api/;
+   }
+
+   # A regular expression should be preceded with ~ 
+   location ~ /airbnb-dynamic/number_odd_or_even/([0-9])$ {
+      proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
+   }
+
+
+   location /airbnb-onepage/ {
+      proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
+   }
+
+
+   location /redirect_me {
+      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+   }
+
+
+   location /hbnb_static {
+      alias /data/web_static/current/;
+      index index.html index.htm;
+   }
+
+   error_page 404 /404.html;
+   
+   root /var/www/html;
+   
+   server_name _;
+
+   index index.html index.htm index.nginx-debian.html;
+
+   location / {
+	try_files $uri $uri/ =404;
+   }
+}
